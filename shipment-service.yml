@@ -1,0 +1,23 @@
+# shipment-service.yml
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/logitrack_shipments
+    username: admin_logiRock
+    password: tu_password_secreta
+
+app:
+  mensaje: "¡Configuración inyectada correctamente desde GitHub!"# shipment-service.yml
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/logitrack_shipments
+    username: admin_logiRock
+    password: tu_password_secreta
+
+app:
+  mensaje: "¡Configuración inyectada correctamente desde GitHub!"
