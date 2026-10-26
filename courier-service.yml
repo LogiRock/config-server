@@ -1,0 +1,13 @@
+server:
+  port: 8082 # Le asignamos el 8082 para que no choque con Shipment (8080) ni Security (8081)
+
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3309/courier_db
+    username: ${DB_USERNAME:admin_logiRock}
+    password: ${DB_PASSWORD:4369}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
