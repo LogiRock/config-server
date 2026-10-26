@@ -1,14 +1,20 @@
 server:
-  port: 8089
+  port: 8081
 
 spring:
-  application:
-    name: security-service
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3308}/logitrack_db
+    url: jdbc:mysql://${DB_HOST:localhost}:3310/security_db?createDatabaseIfNotExist=true
     username: ${DB_USERNAME:admin_logiRock}
     password: ${DB_PASSWORD:4369}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
 
-app:
-  mensaje: "¡Configuración inyectada correctamente desde GitHub!"
+security:
+  jwt:
+    secret: ${JWT_SECRET_BASE64:claveSuperSecretaDeRespaldoParaDesarrollo}
+    issuer: ${JWT_ISSUER:security-service}
+    expiration-seconds: 1800
