@@ -1,1 +1,14 @@
+server:
+  port: 8089
 
+spring:
+  application:
+    name: security-service
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3308}/logitrack_db
+    username: ${DB_USERNAME:admin_logiRock}
+    password: ${DB_PASSWORD:4369}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+app:
+  mensaje: "¡Configuración inyectada correctamente desde GitHub!"
