@@ -15,6 +15,6 @@ spring:
 
 security:
   jwt:
-    secret: ${JWT_SECRET_BASE64:claveSuperSecretaDeRespaldoParaDesarrollo}
+    secret: ${JWT_SECRET_BASE64:TG9naVJvY2tTcHJpbnQyQ2xhdmVTZWd1cmEyMDI2ISEh}
     issuer: ${JWT_ISSUER:security-service}
     expiration-seconds: 1800
