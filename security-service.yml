@@ -18,3 +18,7 @@ security:
     secret: ${JWT_SECRET_BASE64:TG9naVJvY2tTcHJpbnQyQ2xhdmVTZWd1cmEyMDI2ISEh}
     issuer: ${JWT_ISSUER:security-service}
     expiration-seconds: 1800
+app:
+  admin:
+    username: ${ADMIN_USERNAME:admin_logiRock}
+    password: ${ADMIN_PASSWORD:12345}
