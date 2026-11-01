@@ -1,13 +1,18 @@
 server:
-  port: 8082 # Le asignamos el 8082 para que no choque con Shipment (8080) ni Security (8081)
+  port: 8082
 
 spring:
+  application:
+    name: courier-service
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3309/courier_db
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3309}/${DB_DATABASE_NAME:courier_db}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+
+security:
+  service:
+    url: ${SECURITY_SERVICE_URL:http://security-service:8081}
