@@ -2,19 +2,18 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: security-service
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3310/security_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3310}/${DB_DATABASE_NAME:security_db}?createDatabaseIfNotExist=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
     open-in-view: false
 
 security:
   jwt:
-    secret: ${JWT_SECRET_BASE64}
-    issuer: ${JWT_ISSUER:security-service}
     expiration-seconds: 1800

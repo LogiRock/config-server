@@ -5,10 +5,19 @@ spring:
   application:
     name: shipment-service
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3308}/logitrack_db
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3308}/${DB_DATABASE_NAME:shipment_db}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
 
-app:
-  mensaje: "¡Configuración inyectada correctamente desde GitHub!"
+# URLs de los otros servicios. En Docker se usan los nombres de contenedor.
+# Cuando entre Eureka + Feign (F3 y F4) estas properties se borran.
+courier:
+  service:
+    url: ${COURIER_SERVICE_URL:http://courier-service:8082}
+security:
+  service:
+    url: ${SECURITY_SERVICE_URL:http://security-service:8081}
