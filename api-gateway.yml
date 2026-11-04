@@ -1,0 +1,39 @@
+server:
+  port: 8066
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          # Sin rutas automáticas: solo se expone lo que está acá abajo
+          discovery:
+            locator:
+              enabled: false
+          routes:
+            - id: shipment-service
+              uri: lb://SHIPMENT-SERVICE
+              predicates:
+                - Path=/application/shipments/**
+              filters:
+                - RewritePath=/application/shipments/(?<segment>.*), /${segment}
+
+            - id: courier-service
+              uri: lb://COURIER-SERVICE
+              predicates:
+                - Path=/application/couriers/**
+              filters:
+                - RewritePath=/application/couriers/(?<segment>.*), /${segment}
+
+            - id: security-service
+              uri: lb://SECURITY-SERVICE
+              predicates:
+                - Path=/application/auth/**
+              filters:
+                - RewritePath=/application/auth/(?<segment>.*), /${segment}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
