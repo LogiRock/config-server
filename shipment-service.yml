@@ -21,3 +21,12 @@ courier:
 security:
   service:
     url: ${SECURITY_SERVICE_URL:http://security-service:8081}
+
+# Feign corre dentro de un circuit breaker (spring.cloud.openfeign.circuitbreaker.enabled=true).
+# El TimeLimiter de Resilience4j corta a 1 s por defecto, y el alta de clientes
+# (registro en security-service + BCrypt) puede tardar más en la primera llamada.
+resilience4j:
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 5s
